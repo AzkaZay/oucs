@@ -6,7 +6,7 @@
 <title>OUCS -  test, Education admin HTML Template</title>
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
-<meta name="description" content="Preskool's latest school management admin template is a fully responsive and Bootstrap-based HTML5/CSS3 template. Also, it is available in different technology.">
+<meta name="description" content="OUCS's latest school management admin template is a fully responsive and Bootstrap-based HTML5/CSS3 template. Also, it is available in different technology.">
 <meta name="keywords" content="school management template, education template, admin management template">
 <meta name="author" content="Dreamguys">
 
