@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>PreSkool -  School, Education admin HTML Template</title>
+<title>OUCS -  School, Education admin HTML Template</title>
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
 <meta name="description" content="Preskool's latest school management admin template is a fully responsive and Bootstrap-based HTML5/CSS3 template. Also, it is available in different technology.">
