@@ -15,7 +15,7 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/SoengSouy/school_sm_laravel9.git
+git remote add origin https://gitlab.com/Azkazay/oucs.git
 git branch -M main
 git push -uf origin main
 ```
