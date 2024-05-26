@@ -14,6 +14,8 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PaymentsController;
 use Faker\Provider\ar_EG\Payment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
