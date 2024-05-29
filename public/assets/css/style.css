@@ -1226,8 +1226,8 @@ button.bg-danger:hover {
 }
 
 .btn-success {
-    background-color: #7bb13c;
-    border: 1px solid #7bb13c
+    background-color: #560e0e;
+    border: 1px solid #560e0e
 }
 
 .btn-success:hover,
@@ -1235,8 +1235,8 @@ button.bg-danger:hover {
 .btn-success.active,
 .btn-success:active,
 .open>.dropdown-toggle.btn-success {
-    background-color: #699834;
-    border: 1px solid #699834;
+    background-color: #9b1616;
+    border: 1px solid #9b1616;
     color: #fff
 }
 
@@ -1249,15 +1249,15 @@ button.bg-danger:hover {
 .open>.dropdown-toggle.btn-success.focus,
 .open>.dropdown-toggle.btn-success:focus,
 .open>.dropdown-toggle.btn-success:hover {
-    background-color: #699834;
-    border: 1px solid #699834
+    background-color: #9b1616;
+    border: 1px solid #9b1616
 }
 
 .btn-success.active:not(:disabled):not(.disabled),
 .btn-success:active:not(:disabled):not(.disabled),
 .show>.btn-success.dropdown-toggle {
-    background-color: #699834;
-    border-color: #699834;
+    background-color: #9b1616;
+    border-color: #9b1616;
     color: #fff
 }
 
@@ -1269,8 +1269,8 @@ button.bg-danger:hover {
 
 .btn-success.disabled,
 .btn-success:disabled {
-    background-color: #7bb13c;
-    border-color: #7bb13c;
+    background-color: #560e0e;
+    border-color: #560e0e;
     color: #fff
 }
 

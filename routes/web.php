@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -13,9 +14,12 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\StudentScheduleController;
 use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -120,9 +124,23 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('department/edit/page', 'editDepartment')->middleware('auth')->name('department/edit/page'); // page add department
 });
 
-// ----------------------- payments(test) -----------------------------//
+// ----------------------- payments -----------------------------//
 Route::controller(PaymentsController::class)->group(function () {
     Route::get('payments/add-fees/page', 'indexPayments')->middleware('auth')->name('payments.add_fees.page');
     Route::get('payments/edit-fees/page', 'editFees')->middleware('auth')->name('payments.edit_fees.page');
     Route::get('payments/list-fees/page', 'feesList')->middleware('auth')->name('payments.list_fees.page');
+});
+
+// ----------------------- timetable -----------------------------//
+Route::controller(TimetableController::class)->group(function () {
+    Route::get('timetable/timetable/page', 'timetableview')->middleware('auth')->name('timetable.timetable.page');
+    Route::get('timetable/student-schedules/page', 'studenttimetableview')->middleware('auth')->name('timetable.student-schedules.page');
+    Route::get('timetable/teacher-schedules/page', 'teachertimetableview')->middleware('auth')->name('timetable.teacher-schedules.page');
+});
+
+// ----------------------- student-schedules -----------------------------//
+Route::controller(StudentScheduleController::class)->group(function () {
+    Route::get('timetable/student-schedules/page', 'index')->middleware('auth')->name('timetable.student-schedules.page');
+    Route::get('/student-schedules/create', [StudentScheduleController::class, 'create'])->name('student-schedules.create');
+    Route::post('/student-schedules', [StudentScheduleController::class, 'store'])->name('student-schedules.store');
 });

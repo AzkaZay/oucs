@@ -93,8 +93,16 @@
                     <li><a href="{{ route('payments.edit_fees.page') }}" class="{{ set_active(['payments.edit_fees.page']) }}">Edit Fees</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="time-table.html"><i class="fas fa-table"></i> <span>Time Table</span></a>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-table"></i>
+                        <span>Schedules</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                    <li><a href="{{ route('timetable.timetable.page') }}" class="{{ set_active(['timetable.timetable.page']) }}"><span></span>Time Table</a></li>
+                    <li><a href="{{ route('timetable.student-schedules.page') }}" class="{{ set_active(['timetable.student-schedules.page']) }}"><span></span>Student's Scheduler</a></li>
+                    <li><a href="{{ route('timetable.teacher-schedules.page') }}" class="{{ set_active(['timetable.teacher-schedules.page']) }}"></i> <span></span>Teacher's Scheduler</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
