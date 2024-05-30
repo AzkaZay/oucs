@@ -151,12 +151,12 @@ Route::controller(StudentScheduleController::class)->group(function () {
 });
 
 // ----------------------- teacher-schedules -----------------------------//
-// Route::controller(TeacherScheduleController::class)->group(function () {
-//     Route::get('timetable/teacher-schedules/page', 'index')->middleware('auth')->name('timetable.teacher-schedules.page');
-//     Route::get('timetable/teacher-schedules/create', 'create')->middleware('auth')->name('teacher-schedules.create');
-//     Route::post('timetable/teacher-schedules', 'store')->middleware('auth')->name('teacher-schedules.store');
-//     Route::get('timetable/teacher-schedules/{id}', 'show')->middleware('auth')->name('teacher-schedules.show');
-//     Route::get('timetable/teacher-schedules/{id}/edit', 'edit')->middleware('auth')->name('teacher-schedules.edit');
-//     Route::put('timetable/teacher-schedules/{id}', 'update')->middleware('auth')->name('teacher-schedules.update');
-//     Route::delete('timetable/teacher-schedules/{id}', 'destroy')->middleware('auth')->name('teacher-schedules.destroy');
-// });
+Route::controller(TeacherScheduleController::class)->group(function () {
+    Route::get('timetable/teacher-schedules/page', 'index')->middleware('auth')->name('timetable.teacher-schedules.page');
+    Route::get('timetable/teacher-schedules/create', 'create')->middleware('auth')->name('teacher-schedules.create');
+    Route::post('timetable/teacher-schedules', 'store')->middleware('auth')->name('teacher-schedules.store');
+    Route::get('timetable/teacher-schedules/{id}', 'show')->middleware('auth')->name('teacher-schedules.show');
+    Route::get('timetable/teacher-schedules/{id}/edit', 'edit')->middleware('auth')->name('teacher-schedules.edit');
+    Route::put('timetable/teacher-schedules/{id}', 'update')->middleware('auth')->name('teacher-schedules.update');
+    Route::delete('timetable/teacher-schedules/{id}', 'destroy')->middleware('auth')->name('teacher-schedules.destroy');
+});
