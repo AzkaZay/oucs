@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeacherScheduleController;
 use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -141,6 +142,21 @@ Route::controller(TimetableController::class)->group(function () {
 // ----------------------- student-schedules -----------------------------//
 Route::controller(StudentScheduleController::class)->group(function () {
     Route::get('timetable/student-schedules/page', 'index')->middleware('auth')->name('timetable.student-schedules.page');
-    Route::get('/student-schedules/create', [StudentScheduleController::class, 'create'])->name('student-schedules.create');
-    Route::post('/student-schedules', [StudentScheduleController::class, 'store'])->name('student-schedules.store');
+    Route::get('timetable/student-schedules/create', 'create')->middleware('auth')->name('student-schedules.create');
+    Route::post('timetable/student-schedules', 'store')->middleware('auth')->name('student-schedules.store');
+    Route::get('timetable/student-schedules/{id}', 'show')->middleware('auth')->name('student-schedules.show');
+    Route::get('timetable/student-schedules/{id}/edit', 'edit')->middleware('auth')->name('student-schedules.edit');
+    Route::put('timetable/student-schedules/{id}', 'update')->middleware('auth')->name('student-schedules.update');
+    Route::delete('timetable/student-schedules/{id}', 'destroy')->middleware('auth')->name('student-schedules.destroy');
 });
+
+// ----------------------- teacher-schedules -----------------------------//
+// Route::controller(TeacherScheduleController::class)->group(function () {
+//     Route::get('timetable/teacher-schedules/page', 'index')->middleware('auth')->name('timetable.teacher-schedules.page');
+//     Route::get('timetable/teacher-schedules/create', 'create')->middleware('auth')->name('teacher-schedules.create');
+//     Route::post('timetable/teacher-schedules', 'store')->middleware('auth')->name('teacher-schedules.store');
+//     Route::get('timetable/teacher-schedules/{id}', 'show')->middleware('auth')->name('teacher-schedules.show');
+//     Route::get('timetable/teacher-schedules/{id}/edit', 'edit')->middleware('auth')->name('teacher-schedules.edit');
+//     Route::put('timetable/teacher-schedules/{id}', 'update')->middleware('auth')->name('teacher-schedules.update');
+//     Route::delete('timetable/teacher-schedules/{id}', 'destroy')->middleware('auth')->name('teacher-schedules.destroy');
+// });

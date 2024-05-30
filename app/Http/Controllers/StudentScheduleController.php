@@ -7,47 +7,82 @@ use App\Models\StudentSchedule;
 
 class StudentScheduleController extends Controller
 {
+    // Index method to display all student schedules
     public function index()
     {
-        // Fetch all student schedules from the database
         $studentSchedules = StudentSchedule::all();
-        
-        // Debug output to check if data is fetched
-        // dd($studentSchedules);
-        // exit;
-
-        // Pass the fetched schedules to the view for display
         return view('timetable.student-schedules', ['studentSchedules' => $studentSchedules]);
     }
 
-
     public function create()
+    {
+        // Return the studentcreate.blade.php view for creating a new student schedule
+        return view('timetable.studentcreate');
+    }
 
-        {
-            return view('timetable.studentcreate');
-        }
 
-        
+    // Show method to display a specific student schedule
+    public function show($id)
+    {
+        $studentSchedule = StudentSchedule::findOrFail($id);
+        return view('timetable.student-schedule-show', compact('studentSchedule'));
+    }
 
     public function store(Request $request)
-        
-        {  // Validate the form data
-            $request->validate([
-                'module_name' => 'required|string|max:255',
-                'class' => 'required|string|max:255',
-                'datetime' => 'required|date',
-                'number_of_classes' => 'required|integer|min:1',
-            ]);
+{
+    // Validation rules for the incoming request data
+    $rules = [
+        'module_name' => 'required',
+        'class' => 'required',
+        'datetime' => 'required',
+        'number_of_classes' => 'required|numeric',
+    ];
 
-            // Create a new student schedule instance
-            $studentSchedule = new StudentSchedule();
-            $studentSchedule->module_name = $request->module_name;
-            $studentSchedule->class = $request->class;
-            $studentSchedule->datetime = $request->datetime;
-            $studentSchedule->number_of_classes = $request->number_of_classes;
-            $studentSchedule->save();
+    // Validate the request data
+    $request->validate($rules);
 
-            // Redirect back to the create page with a success message
-            return redirect()->route('student-schedules.create')->with('success', 'Student schedule created successfully!');
-        }
+    // Create a new student schedule using the request data
+    $studentSchedule = new StudentSchedule();
+    $studentSchedule->module_name = $request->input('module_name');
+    $studentSchedule->class = $request->input('class');
+    $studentSchedule->datetime = $request->input('datetime');
+    $studentSchedule->number_of_classes = $request->input('number_of_classes');
+    $studentSchedule->save();
+
+    // Redirect the user after successfully storing the student schedule
+    return redirect()->route('timetable.student-schedules.page')->with('success', 'Student Schedule created successfully.');
+}
+
+
+    // Edit method to show the form for editing a specific student schedule
+    public function edit($id)
+    {
+        $studentSchedule = StudentSchedule::findOrFail($id);
+        return view('timetable.student-schedule-edit', compact('studentSchedule'));
     }
+
+    // Update method to update a specific student schedule in the database
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'module_name' => 'required|string|max:255',
+            'class' => 'required|string|max:255',
+            'datetime' => 'required|date',
+            'number_of_classes' => 'required|integer',
+        ]);
+
+        $studentSchedule = StudentSchedule::findOrFail($id);
+        $studentSchedule->update($request->all());
+
+        return redirect()->route('timetable.student-schedules.page')->with('success', 'Student Schedule updated successfully.');
+    }
+
+    // Destroy method to delete a specific student schedule from the database
+    public function destroy($id)
+    {
+        $studentSchedule = StudentSchedule::findOrFail($id);
+        $studentSchedule->delete();
+
+        return redirect()->route('timetable.student-schedules.page')->with('success', 'Student Schedule deleted successfully.');
+    }
+}
