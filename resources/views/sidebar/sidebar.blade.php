@@ -22,10 +22,14 @@
                         <li><a href="{{ route('student/dashboard') }}" class="{{set_active(['student/dashboard'])}}">Student Dashboard</a></li>
                     </ul>
                 </li>
+
+                <li class="menu-title">
+                    <span>User Management</span>
+                </li>
                 @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                 <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-shield-alt"></i>
-                        <span>User Management</span> 
+                        <span>Users</span> 
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
@@ -55,7 +59,9 @@
                         <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Teacher Add</a></li>
                     </ul>
                 </li>
-                
+                <li class="menu-title">
+                    <span>Curriculum features</span>
+                </li>
                 <li class="submenu {{set_active(['department/add/page','department/edit/page'])}}">
                     <a href="#"><i class="fas fa-building"></i>
                         <span> Departments</span>
@@ -67,15 +73,13 @@
                         <li><a href="{{ route('department/edit/page') }}" class="{{set_active(['department/edit/page'])}}">Department Edit</a></li>
                     </ul>
                 </li>
-                <li class="submenu">
+                <li class="submenu {{set_active(['courses.list-courses.page'])}}">
                     <a href="#"><i class="fas fa-book-reader"></i>
-                        <span> Subjects</span>
+                        <span>Courses</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="subjects.html">Subject List</a></li>
-                        <li><a href="add-subject.html">Subject Add</a></li>
-                        <li><a href="edit-subject.html">Subject Edit</a></li>
+                        <li><a href="{{ route('courses.list-courses.page') }}" class="{{set_active(['courses.list-courses.page'])}}">View courses</a></li>
                     </ul>
                 </li>
                 
@@ -95,13 +99,13 @@
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-table"></i>
-                        <span>Schedules</span>
+                        <span>Scheduling Menu</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                    <li><a href="{{ route('timetable.timetable.page') }}" class="{{ set_active(['timetable.timetable.page']) }}"><span></span>Time Table</a></li>
-                    <li><a href="{{ route('timetable.student-schedules.page') }}" class="{{ set_active(['timetable.student-schedules.page']) }}"><span></span>Student's Scheduler</a></li>
-                    <li><a href="{{ route('timetable.teacher-schedules.page') }}" class="{{ set_active(['timetable.teacher-schedules.page']) }}"></i> <span></span>Teacher's Scheduler</a></li>
+                    <li><a href="{{ route('timetable.timetable.page') }}" class="{{ set_active(['timetable.timetable.page']) }}">Time Table</a></li>
+                    <li><a href="{{ route('timetable.student-schedules.page') }}" class="{{ set_active(['timetable.student-schedules.page']) }}">Student's Scheduler</a></li>
+                    <li><a href="{{ route('timetable.teacher-schedules.page') }}" class="{{ set_active(['timetable.teacher-schedules.page']) }}">Teacher's Scheduler</a></li>
                     </ul>
                 </li>
             </ul>

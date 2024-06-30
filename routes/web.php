@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\TeacherScheduleController;
 use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
@@ -124,6 +125,19 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('department/add/page', 'indexDepartment')->middleware('auth')->name('department/add/page'); // page add department
     Route::get('department/edit/page', 'editDepartment')->middleware('auth')->name('department/edit/page'); // page add department
 });
+
+// ----------------------- courses -----------------------------//
+Route::controller(CoursesController::class)->group(function () {
+    Route::get('courses/list-courses/page', 'CourseList')->middleware('auth')->name('courses.list-courses.page'); 
+    Route::get('courses/add-courses/page', 'indexCourse')->middleware('auth')->name('courses.add-courses.page'); 
+    Route::get('courses/list-courses/{id}/edit', 'editCourse')->middleware('auth')->name('list-courses.edit');
+    Route::post('courses/list-courses', 'store')->middleware('auth')->name('list-courses.store');
+    Route::get('courses/list-courses/{id}', 'show')->middleware('auth')->name('list-courses.show');
+    Route::put('courses/list-courses/{id}', 'update')->middleware('auth')->name('list-courses.update');
+    Route::delete('courses/list-courses/{id}', 'destroy')->middleware('auth')->name('list-courses.destroy');
+});
+
+
 
 // ----------------------- payments -----------------------------//
 Route::controller(PaymentsController::class)->group(function () {
