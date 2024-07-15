@@ -12,11 +12,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\GradingController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentScheduleController;
+use App\Http\Controllers\UserController;
 use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -60,6 +63,11 @@ Route::group(['middleware'=>'auth'],function()
 
 Auth::routes();
 
+// ---------------------------- Spatie test ------------------------------//
+
+// ----------------------------studentlist---------------------------//
+
+
 // ----------------------------login ------------------------------//
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
@@ -97,16 +105,19 @@ Route::controller(Setting::class)->group(function () {
 });
 
 // ------------------------ student -------------------------------//
-Route::controller(StudentController::class)->group(function () {
-    Route::get('student/list', 'student')->middleware('auth')->name('student/list'); // list student
-    Route::get('student/grid', 'studentGrid')->middleware('auth')->name('student/grid'); // grid student
-    Route::get('student/add/page', 'studentAdd')->middleware('auth')->name('student/add/page'); // page student
-    Route::post('student/add/save', 'studentSave')->name('student/add/save'); // save record student
-    Route::get('student/edit/{id}', 'studentEdit'); // view for edit
-    Route::post('student/update', 'studentUpdate')->name('student/update'); // update record student
-    Route::post('student/delete', 'studentDelete')->name('student/delete'); // delete record student
-    Route::get('student/profile/{id}', 'studentProfile')->middleware('auth'); // profile student
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/student/list-students', [StudentController::class, 'studentList'])->name('student.list-students');
+    Route::get('student/student-grid', [StudentController::class, 'studentGrid'])->name('student.student-grid'); // grid student
+    Route::get('/student/add-student', [StudentController::class, 'studentAdd'])->name('student.add-student');
+    Route::post('student/add/save', [StudentController::class, 'saveRecord'])->name('student.add-student.save'); // save record student
+    Route::get('student/edit/{id}', [StudentController::class, 'editRecord'])->name('student.edit'); // view for edit
+    Route::post('student/update', [StudentController::class, 'updateRecordStudent'])->name('student.update'); // update record student
+    Route::post('student/delete', [StudentController::class, 'studentDelete'])->name('student.delete'); // delete record student
+    Route::get('student/profile/{id}', [StudentController::class, 'studentProfile'])->name('student.profile'); // profile student
 });
+
+
 
 // ------------------------ teacher -------------------------------//
 Route::controller(TeacherController::class)->group(function () {
@@ -119,12 +130,18 @@ Route::controller(TeacherController::class)->group(function () {
     Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
 });
 
-// ----------------------- department -----------------------------//
-Route::controller(DepartmentController::class)->group(function () {
-    Route::get('department/list/page', 'departmentList')->middleware('auth')->name('department/list/page'); // department/list/page
-    Route::get('department/add/page', 'indexDepartment')->middleware('auth')->name('department/add/page'); // page add department
-    Route::get('department/edit/page', 'editDepartment')->middleware('auth')->name('department/edit/page'); // page add department
+// ----------------------- grading -----------------------------//
+Route::controller(GradingController::class)->group(function () {
+    Route::get('grading/list-grading', 'gradingList')->middleware('auth')->name('grading.list-grading'); // grading/list/page
+    Route::get('grading/add-grading', 'indexGrading')->middleware('auth')->name('grading.add-grading'); // page add grading
+    Route::get('grading/edit-grading/{id}', 'editGrading')->middleware('auth')->name('list-grading.edit'); // edit grading record
+    Route::post('grading/delete', 'gradingDelete')->name('grading.delete'); // delete grading record
+    Route::post('grading/list-grading', 'store')->middleware('auth')->name('list-grading.store');
+    Route::get('grading/list-grading/{id}', 'show')->middleware('auth')->name('list-grading.show');
+    Route::put('grading/list-grading/{id}', 'update')->middleware('auth')->name('list-grading.update');
+    Route::delete('grading/list-grading/{id}', 'destroy')->middleware('auth')->name('list-grading.destroy');
 });
+
 
 // ----------------------- courses -----------------------------//
 Route::controller(CoursesController::class)->group(function () {
@@ -135,15 +152,6 @@ Route::controller(CoursesController::class)->group(function () {
     Route::get('courses/list-courses/{id}', 'show')->middleware('auth')->name('list-courses.show');
     Route::put('courses/list-courses/{id}', 'update')->middleware('auth')->name('list-courses.update');
     Route::delete('courses/list-courses/{id}', 'destroy')->middleware('auth')->name('list-courses.destroy');
-});
-
-
-
-// ----------------------- payments -----------------------------//
-Route::controller(PaymentsController::class)->group(function () {
-    Route::get('payments/add-fees/page', 'indexPayments')->middleware('auth')->name('payments.add_fees.page');
-    Route::get('payments/edit-fees/page', 'editFees')->middleware('auth')->name('payments.edit_fees.page');
-    Route::get('payments/list-fees/page', 'feesList')->middleware('auth')->name('payments.list_fees.page');
 });
 
 // ----------------------- timetable -----------------------------//
@@ -173,4 +181,11 @@ Route::controller(TeacherScheduleController::class)->group(function () {
     Route::get('timetable/teacher-schedules/{id}/edit', 'edit')->middleware('auth')->name('teacher-schedules.edit');
     Route::put('timetable/teacher-schedules/{id}', 'update')->middleware('auth')->name('teacher-schedules.update');
     Route::delete('timetable/teacher-schedules/{id}', 'destroy')->middleware('auth')->name('teacher-schedules.destroy');
+});
+
+// ----------------------- payments -----------------------------//
+Route::controller(PaymentsController::class)->group(function () {
+    Route::get('payments/add-fees/page', 'indexPayments')->middleware('auth')->name('payments.add_fees.page');
+    Route::get('payments/edit-fees/page', 'editFees')->middleware('auth')->name('payments.edit_fees.page');
+    Route::get('payments/list-fees/page', 'feesList')->middleware('auth')->name('payments.list_fees.page');
 });

@@ -38,14 +38,14 @@
                 </li>
                 @endif
 
-                <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
+                <li class="submenu {{set_active(['student.list-students','student.student-grid','student.add-student'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-graduation-cap"></i>
                         <span> Students</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">Student List</a></li>
-                        <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Student Add</a></li>
+                        <li><a href="{{ route('student.list-students') }}"  class="{{set_active(['student.list-students','student.student-grid'])}}">Student List</a></li>
+                        <li><a href="{{ route('student.add-student') }}" class="{{set_active(['student.add-student'])}}">Student Add</a></li>
                     </ul>
                 </li>
 
@@ -62,15 +62,13 @@
                 <li class="menu-title">
                     <span>Curriculum features</span>
                 </li>
-                <li class="submenu {{set_active(['department/add/page','department/edit/page'])}}">
+                <li class="submenu {{set_active(['grading/add-grading/page','grading/edit-grading/page'])}}">
                     <a href="#"><i class="fas fa-building"></i>
-                        <span> Departments</span>
+                        <span> Grade Markings</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('department/list/page') }}" class="{{set_active(['department/list/page'])}}">Department List</a></li>
-                        <li><a href="{{ route('department/add/page') }}" class="{{set_active(['department/add/page'])}}">Department Add</a></li>
-                        <li><a href="{{ route('department/edit/page') }}" class="{{set_active(['department/edit/page'])}}">Department Edit</a></li>
+                        <li><a href="{{ route('grading.list-grading') }}" class="{{set_active(['department/list-grading/page'])}}">Grading List</a></li>
                     </ul>
                 </li>
                 <li class="submenu {{set_active(['courses.list-courses.page'])}}">
