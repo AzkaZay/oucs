@@ -15,6 +15,7 @@ use App\Http\Controllers\Setting;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GradingController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
@@ -184,8 +185,15 @@ Route::controller(TeacherScheduleController::class)->group(function () {
 });
 
 // ----------------------- payments -----------------------------//
-Route::controller(PaymentsController::class)->group(function () {
-    Route::get('payments/add-fees/page', 'indexPayments')->middleware('auth')->name('payments.add_fees.page');
+Route::controller(PaymentController::class)->group(function () {
+    Route::get('payments/add-fees/page', 'showPaymentForm')->middleware('auth')->name('payments.add_fees.page');
     Route::get('payments/edit-fees/page', 'editFees')->middleware('auth')->name('payments.edit_fees.page');
-    Route::get('payments/list-fees/page', 'feesList')->middleware('auth')->name('payments.list_fees.page');
+    Route::get('payments/list-fees', 'feesList')->middleware('auth')->name('payments.list-fees');
+    
+    // New routes for handling payments
+    Route::post('payments/process-payment', 'processPayment')->middleware('auth')->name('payments.process');
+    Route::get('payments/status', 'paymentStatus')->middleware('auth')->name('payments.status');
 });
+
+//------------------------count student--------------------------//
+Route::get('/student-count', [StudentController::class, 'countStudents']);

@@ -96,7 +96,7 @@ class UserManagementController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Super Admin')
+            if (Session::get('role_name') === 'Admin')
             {
                 if ($request->avatar =='user.jpg')
                 {

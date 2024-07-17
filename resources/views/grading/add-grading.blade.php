@@ -34,12 +34,6 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Full Name <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="full_name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
                                             <label>Module Name <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="module_name" required>
                                         </div>

@@ -13,6 +13,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
+        "paypal/paypal-checkout-sdk": "^1.0",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {
