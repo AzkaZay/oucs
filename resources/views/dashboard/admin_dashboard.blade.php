@@ -38,7 +38,6 @@
                     </ul>
                 </div>
                 <div class="tab-content profile-tab-cont">
-
                     <div class="tab-pane fade show active" id="per_details_tab">
                         <div class="row">
                             <div class="col-lg-9">
@@ -89,19 +88,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
-                                            <span>Skills </span>
-                                            <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
+                                            <span>Add news</span>
+                                            <a href="{{ route('news.create') }}"><i class="fas fa-newspaper"></i></a>
                                         </h5>
-                                        <div class="skill-tags">
-                                            <span>Html5</span>
-                                            <span>CSS3</span>
-                                            <span>WordPress</span>
-                                            <span>Javascript</span>
-                                            <span>Android</span>
-                                            <span>iOS</span>
-                                            <span>Angular</span>
-                                            <span>PHP</span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Setting;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GradingController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\RoleController;
@@ -199,3 +200,11 @@ Route::controller(PaymentController::class)->group(function () {
 
 //------------------------count student--------------------------//
 Route::get('/student-count', [StudentController::class, 'countStudents']);
+//------------------------news--------------------------//
+Route::get('/', [HomeController::class, 'index'])->name('dashboard.home'); // Home page
+
+Route::controller(NewsController::class)->group(function () {
+    Route::get('news/create', 'create')->middleware('auth')->name('news.create');
+    Route::post('news/store', 'store')->middleware('auth')->name('news.store');
+    Route::delete('news/{id}', 'destroy')->middleware('auth')->name('news.destroy');
+});

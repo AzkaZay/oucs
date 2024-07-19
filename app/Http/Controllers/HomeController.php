@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,14 +18,14 @@ class HomeController extends Controller
     }
 
     /**
-    * Show the application dashboard.
-    *
-    * @return \Illuminate\Contracts\Support\Renderable
-    */
-    /** home dashboard */
+     * Show the application dashboard with news.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        return view('dashboard.home');
+        $news = News::all(); // Fetch all news items
+        return view('dashboard.home', ['news' => $news]); // Pass the news variable to the view
     }
 
     /** profile user */
