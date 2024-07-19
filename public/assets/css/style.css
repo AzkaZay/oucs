@@ -1937,8 +1937,8 @@ div.dataTables_wrapper div.dataTables_length select {
 .nav-tabs.nav-tabs-solid>li>a.active,
 .nav-tabs.nav-tabs-solid>li>a.active:hover,
 .nav-tabs.nav-tabs-solid>li>a.active:focus {
-    background-color: #560e0e;
-    border-color: #560e0e;
+    background-color: none;
+    border-color: none;
     color: #fff
 }
 
