@@ -6,10 +6,10 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">Profile</h3>
+                    <h3 class="page-title">Admin profile</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
                     </ul>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <div class="profile-menu">
                     <ul class="nav nav-tabs nav-tabs-solid">
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Password</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab"><span class="btn btn-primary">Password</span></a>
                         </li>
                     </ul>
                 </div>
@@ -46,9 +46,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
                                             <span>Personal Details</span>
-                                            <a class="edit-link" data-bs-toggle="modal"
-                                                href="#edit_personal_details"><i
-                                                    class="far fa-edit me-1"></i>Edit</a>
+                                            <br></br>
                                         </h5>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Name</p>

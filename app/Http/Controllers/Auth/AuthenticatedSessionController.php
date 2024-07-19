@@ -32,6 +32,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Redirect based on user role
+        $user = Auth::user();
+
+        if ($user->role_name === 'Admin') {
+            return redirect()->route('admin/dashboard');
+        } elseif ($user->role_name === 'Teacher') {
+            return redirect()->route('teacher/dashboard');
+        } elseif ($user->role_name === 'Student') {
+            return redirect()->route('student/dashboard');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -41,6 +52,7 @@ class AuthenticatedSessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
+
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();

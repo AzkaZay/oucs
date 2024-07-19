@@ -15,8 +15,8 @@
                     <a href="#"><i class="feather-grid"></i> <span>Dashboard</span> <span class="menu-arrow"></span></a>
                     <ul>
                         @if (Session::get('role_name') === 'Admin')
-                        <li class="{{ set_active(['home']) }} {{ (request()->is('view')) ? 'active' : '' }}">
-                            <a href="{{ route('home') }}">Admin</a>
+                        <li class="{{ set_active(['admin/dashboard']) }} {{ (request()->is('view')) ? 'active' : '' }}">
+                            <a href="{{ route('admin/dashboard') }}">Admin</a>
                         </li>
                         @endif
 
@@ -105,8 +105,7 @@
                     <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span>Payment details</span> <span class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="{{ route('payments.list-fees') }}" class="{{ set_active(['payments.list-fees']) }}">List of Fees</a></li>
-                        <li><a href="{{ route('payments.add_fees.page') }}" class="{{ set_active(['payments.add_fees.page']) }}">Add Fees</a></li>
-                        <li><a href="{{ route('payments.edit_fees.page') }}" class="{{ set_active(['payments.edit_fees.page']) }}">Edit Fees</a></li>
+                        <li><a href="{{ route('payments.payment-form') }}" class="{{ set_active(['payments.payment-form']) }}">Add Fees</a></li>
                     </ul>
                 </li>
                 @endif

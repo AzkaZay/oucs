@@ -33,6 +33,12 @@ class HomeController extends Controller
         return view('dashboard.profile');
     }
 
+    /** admin dashboard */
+    public function adminDashboardIndex()
+    {
+        return view('dashboard.admin_dashboard');
+    }
+
     /** teacher dashboard */
     public function teacherDashboardIndex()
     {

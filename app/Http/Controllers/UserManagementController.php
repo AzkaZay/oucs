@@ -41,6 +41,7 @@ class UserManagementController extends Controller
                 $user_id       = $request->user_id;
                 $name         = $request->name;
                 $email        = $request->email;
+                $date_of_birth = $request->date_of_birth;
                 $role_name    = $request->role_name;
                 $position     = $request->position;
                 $phone        = $request->phone_number;
@@ -71,6 +72,7 @@ class UserManagementController extends Controller
                     'email'        => $email,
                     'position'     => $position,
                     'phone_number' => $phone,
+                    'date_of_birth' => $date_of_birth,
                     'department'   => $department,
                     'status'       => $status,
                     'avatar'       => $image_name,

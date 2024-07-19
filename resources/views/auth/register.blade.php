@@ -22,7 +22,11 @@
                 <div class="form-group local-forms">
                     <label>Role Name <span class="login-danger">*</span></label>
                     <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                        <option selected disabled>Role Type</option>
+                        <option selected disabled></option>
+                        <option value="admin" {{ old('role_name') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        <option value="teacher" {{ old('role_name') == 'teacher' ? 'selected' : '' }}>Teacher</option>
+                        <option value="student" {{ old('role_name') == 'student' ? 'selected' : '' }}>Student</option>
+
                         @foreach ($role as $name)
                             <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
                         @endforeach

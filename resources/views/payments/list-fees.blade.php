@@ -57,6 +57,17 @@
                                                     </td>                                                    </td>
                                                     <td>{{ $payment->transaction_id }}</td>
                                                     <td>{{ $payment->payment_method }}</td>
+                                                    <td class="text-end">
+                                                        <a href="{{ route('payments.edit-fees', $payment->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
+                                                        <a href="{{ route('payments.payment-show', $payment->id) }}" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>
+                                                        <form action="{{ route('list-fees.destroy', $payment->id) }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" title="Delete Record" style="border: none; background-color:transparent;">
+                                                                <span class="fa fa-trash"></span>
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

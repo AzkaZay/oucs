@@ -47,6 +47,12 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
+                                            <label>DOB<span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="date_of_birth" value="{{ $users->date_of_birth }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
                                             <label>Status <span class="login-danger">*</span></label>
                                             <select class="form-control select" name="status">
                                                 <option disabled>Select Status</option>
@@ -62,9 +68,7 @@
                                             <select class="form-control select" name="role_name">
                                                 <option disabled>Select Role Name</option>
                                                 <option value="Admin" {{ $users->role_name == 'Admin' ? 'selected' : '' }}>Admin</option>
-                                                <option value="Super Admin" {{ $users->role_name == 'Super Admin' ? 'selected' : '' }}>Super Admin</option>
-                                                <option value="Normal User" {{ $users->role_name == 'Normal User' ? 'selected' : '' }}>Normal User</option>
-                                                <option value="Teachers" {{ $users->role_name == 'Teachers' ? 'selected' : '' }}>Teachers</option>
+                                                <option value="Teacher" {{ $users->role_name == 'Teacher' ? 'selected' : '' }}>Teachers</option>
                                                 <option value="Student" {{ $users->role_name == 'Student' ? 'selected' : '' }}>Student</option>
                                             </select>
                                         </div>

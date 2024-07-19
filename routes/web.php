@@ -64,8 +64,6 @@ Route::group(['middleware'=>'auth'],function()
 
 Auth::routes();
 
-// ---------------------------- Spatie test ------------------------------//
-
 // ----------------------------studentlist---------------------------//
 
 
@@ -87,8 +85,10 @@ Route::controller(RegisterController::class)->group(function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'index')->middleware('auth')->name('home');
     Route::get('user/profile/page', 'userProfile')->middleware('auth')->name('user/profile/page');
+    Route::get('admin/dashboard', 'adminDashboardIndex')->middleware('auth')->name('admin/dashboard');
     Route::get('teacher/dashboard', 'teacherDashboardIndex')->middleware('auth')->name('teacher/dashboard');
     Route::get('student/dashboard', 'studentDashboardIndex')->middleware('auth')->name('student/dashboard');
+    Route::get('/redirect', 'redirectBasedOnRole')->middleware('auth')->name('redirect');
 });
 
 // ----------------------------- user controller -------------------------//
@@ -186,13 +186,15 @@ Route::controller(TeacherScheduleController::class)->group(function () {
 
 // ----------------------- payments -----------------------------//
 Route::controller(PaymentController::class)->group(function () {
-    Route::get('payments/add-fees/page', 'showPaymentForm')->middleware('auth')->name('payments.add_fees.page');
-    Route::get('payments/edit-fees/page', 'editFees')->middleware('auth')->name('payments.edit_fees.page');
+    Route::get('payments/payment-form', 'showPaymentForm')->middleware('auth')->name('payments.payment-form');
+    Route::get('payments/edit-fees/{id}', 'editFees')->middleware('auth')->name('payments.edit-fees');
     Route::get('payments/list-fees', 'feesList')->middleware('auth')->name('payments.list-fees');
-    
-    // New routes for handling payments
+    Route::get('payments/list-fees/{id}', 'show')->middleware('auth')->name('payments.payment-show');
+    Route::put('payments/list-fees/{id}', 'update')->middleware('auth')->name('list-fees.update');
+    Route::delete('payments/list-fees/{id}', 'destroy')->middleware('auth')->name('list-fees.destroy');
     Route::post('payments/process-payment', 'processPayment')->middleware('auth')->name('payments.process');
     Route::get('payments/status', 'paymentStatus')->middleware('auth')->name('payments.status');
+
 });
 
 //------------------------count student--------------------------//
