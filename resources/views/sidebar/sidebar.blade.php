@@ -20,7 +20,7 @@
                         </li>
                         @endif
 
-                        @if (Session::get('role_name') === 'teacher')
+                        @if (Session::get('role_name') === 'teacher'||Session::get('role_name') === 'Teachers')
                         <li class="{{ set_active(['teacher/dashboard']) }} {{ (request()->is('view')) ? 'active' : '' }}">
                             <a href="{{ route('teacher/dashboard') }}">Teacher</a>
                         </li>
@@ -34,7 +34,7 @@
                     </ul>
                 </li>
 
-                @if (Session::get('role_name') === 'Admin'|| Session::get('role_name') === 'teacher')
+                @if (Session::get('role_name') === 'Admin'|| Session::get('role_name') === 'teacher'||Session::get('role_name') === 'Teachers')
                 <li class="menu-title">
                     <span>User Management</span>
                 </li>
@@ -49,7 +49,7 @@
                 </li>
                 @endif
 
-                @if (Session::get('role_name') === 'teacher')
+                @if (Session::get('role_name') === 'Teachers'||Session::get('role_name') === 'teacher')
                 <li class="submenu {{ set_active(['student.add-student']) }} {{ (request()->is('student.add-student')) ? 'active' : '' }}">
                     <a href="{{ route('student.add-student') }}"><i class="fas fa-graduation-cap"></i><span>Students</span> <span class="menu-arrow"></span></a>
                     <ul>
@@ -72,7 +72,7 @@
     <span>Curriculum features</span>
 </li>
 
-@if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'teacher')
+@if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'teacher'||Session::get('role_name') === 'Teachers')
 <li class="submenu {{ set_active(['grading/list-grading']) }} {{ (request()->is('grading/list-grading')) ? 'active' : '' }}">
     <a href="#"><i class="fab fa-pied-piper-square"></i> <span>Grade Markings</span> <span class="menu-arrow"></span></a>
     <ul>
@@ -121,7 +121,7 @@
                         </li>
                         @endif
 
-                        @if (Session::get('role_name') === 'teacher')
+                        @if (Session::get('role_name') === 'teacher'||Session::get('role_name') === 'Teachers')
                         <li class="{{ set_active(['timetable.teacher-schedules.page']) }} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
                             <a href="{{ route('timetable.teacher-schedules.page') }}">Teacher's Scheduler</a>
                         </li>

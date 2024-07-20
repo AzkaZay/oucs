@@ -112,7 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/student/list-students', [StudentController::class, 'studentList'])->name('student.list-students');
     Route::get('student/student-grid', [StudentController::class, 'studentGrid'])->name('student.student-grid'); // grid student
     Route::get('/student/add-student', [StudentController::class, 'studentAdd'])->name('student.add-student');
-    Route::post('student/add/save', [StudentController::class, 'saveRecord'])->name('student.add-student.save'); // save record student
+    Route::post('student/save', [StudentController::class, 'studentSave'])->name('student.save'); // save record student
     Route::get('student/edit/{id}', [StudentController::class, 'editRecord'])->name('student.edit'); // view for edit
     Route::post('student/update', [StudentController::class, 'updateRecordStudent'])->name('student.update'); // update record student
     Route::post('student/delete', [StudentController::class, 'studentDelete'])->name('student.delete'); // delete record student

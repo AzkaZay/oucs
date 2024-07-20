@@ -12,9 +12,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         // Create roles if they do not exist
-        $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $teacherRole = Role::firstOrCreate(['name' => 'teacher']);
-        $studentRole = Role::firstOrCreate(['name' => 'student']);
+        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
+        $teacherRole = Role::firstOrCreate(['name' => 'Teacher']);
+        $studentRole = Role::firstOrCreate(['name' => 'Student']);
 
         // Create permissions if necessary
         // Example: Permission::firstOrCreate(['name' => 'some_permission']);
