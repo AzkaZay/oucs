@@ -13,6 +13,7 @@ class GradingController extends Controller
     {
         $newGrading = Grading::all();
         return view('grading.add-grading', ['newGrading' => $newGrading]);
+
     }
 
     public function editGrading($id)
@@ -21,17 +22,33 @@ class GradingController extends Controller
         return view('grading.edit-grading', compact('newGrading'));
     }
 
-    public function gradingList()
+    public function gradingList($teacherId = null)
     {
-        $newGrading = Grading::all();
-        return view('grading.list-grading', ['newGrading' => $newGrading]);
+        if($teacherId){
+
+            $newGrading = Grading::where('teacher_id', $teacherId)
+            ->get();        
+            
+            return view('grading.list-grading', ['newGrading' => $newGrading, 'teacherId' => $teacherId]);
+
+        }
+        else{
+
+            $newGrading = Grading::all();
+
+            return view('grading.list-grading', ['newGrading' => $newGrading]);
+        }
+
     }
 
     public function show($id)
     {
         $newGrading = Grading::findOrFail($id);
         return view('grading.grading-show', compact('newGrading'));
-    }
+        // $studentGrades = Grading::where('student_id', $studentId)->get();
+    }//$stdentId is going to come from the route students/show/{studentId}
+    // route({'student.show', ['studentId' => Session.get('user_Id')})
+    // remember to add the Session.get(role_name == 'student') to the sidebar item "My Grades"
 
     public function gradingDelete(Request $request)
     {
@@ -48,10 +65,12 @@ class GradingController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store($teacherId, Request $request)
     {
         $rules = [
             'student_id' => 'required|string|max:255',
+            'teacher_id' => 'required|string|max:255',
+            'full_name' => 'required|string|max:255',
             'module_name' => 'required|string|max:255',
             'grading' => 'required',
             'semester' => 'required',
@@ -61,18 +80,22 @@ class GradingController extends Controller
 
         $newGrading = new Grading();
         $newGrading->student_id = $request->input('student_id');
+        $newGrading->teacher_id = $request->input('teacher_id');
+        $newGrading->full_name = $request->input('full_name');
         $newGrading->module_name = $request->input('module_name');
         $newGrading->grading = $request->input('grading');
         $newGrading->semester = $request->input('semester');
         $newGrading->save();
 
-        return redirect()->route('grading.list-grading')->with('success', 'Grading created successfully.');
+        return redirect()->route('grading.list-grading', ['teacherId' => $teacherId])->with('success', 'Grading created successfully.');
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'student_id' => 'required|string|max:255',
+            'teacher_id' => 'required|string|max:255',
+            'full_name' => 'required|string|max:255',
             'module_name' => 'required|string|max:255',
             'grading' => 'required',
             'semester' => 'required',

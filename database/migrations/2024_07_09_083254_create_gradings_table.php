@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('gradings', function (Blueprint $table) {
             $table->id();
             $table->string('student_id')->nullable();
+            $table->string('teacher_id')->nullable();
             $table->string('full_name')->nullable();
             $table->string('module_name')->nullable();
             $table->string('grading')->nullable();

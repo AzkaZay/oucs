@@ -134,11 +134,11 @@ Route::controller(TeacherController::class)->group(function () {
 
 // ----------------------- grading -----------------------------//
 Route::controller(GradingController::class)->group(function () {
-    Route::get('grading/list-grading', 'gradingList')->middleware('auth')->name('grading.list-grading'); // grading/list/page
+    Route::get('grading/list-grading/{teacherId?}', 'gradingList')->middleware('auth')->name('grading.list-grading'); // grading/list/page
     Route::get('grading/add-grading', 'indexGrading')->middleware('auth')->name('grading.add-grading'); // page add grading
     Route::get('grading/edit-grading/{id}', 'editGrading')->middleware('auth')->name('list-grading.edit'); // edit grading record
     Route::post('grading/delete', 'gradingDelete')->name('grading.delete'); // delete grading record
-    Route::post('grading/list-grading', 'store')->middleware('auth')->name('list-grading.store');
+    Route::post('grading/list-grading/{teacherId}', 'store')->middleware('auth')->name('list-grading.store');
     Route::get('grading/list-grading/{id}', 'show')->middleware('auth')->name('list-grading.show');
     Route::put('grading/list-grading/{id}', 'update')->middleware('auth')->name('list-grading.update');
     Route::delete('grading/list-grading/{id}', 'destroy')->middleware('auth')->name('list-grading.destroy');

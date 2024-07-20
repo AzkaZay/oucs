@@ -20,7 +20,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                        <form method="POST" action="{{ route('list-grading.store') }}">
+                        <form method="POST" action="{{ route('list-grading.store', ['teacherId' => Session::get('user_id')]) }}">
                             @csrf        
                                 <div class="row">
                                     <div class="col-12">
@@ -32,12 +32,20 @@
                                             <input type="text" class="form-control" name="student_id" required>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Full Name <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="full_name" required>
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Module Name <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="module_name" required>
                                         </div>
                                     </div>
+                                            <input hidden type="text" class="form-control" name="teacher_id" value= {{Session::get('user_id')}} required>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Grading <span class="login-danger">*</span></label>
