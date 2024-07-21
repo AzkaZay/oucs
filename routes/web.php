@@ -139,7 +139,7 @@ Route::controller(GradingController::class)->group(function () {
     Route::get('grading/edit-grading/{id}', 'editGrading')->middleware('auth')->name('list-grading.edit'); // edit grading record
     Route::post('grading/delete', 'gradingDelete')->name('grading.delete'); // delete grading record
     Route::post('grading/list-grading/{teacherId}', 'store')->middleware('auth')->name('list-grading.store');
-    Route::get('grading/list-grading/{id}', 'show')->middleware('auth')->name('list-grading.show');
+    Route::get('grading/grading-show/{studentId}', 'show')->middleware('auth')->name('grading.grading-show');
     Route::put('grading/list-grading/{id}', 'update')->middleware('auth')->name('list-grading.update');
     Route::delete('grading/list-grading/{id}', 'destroy')->middleware('auth')->name('list-grading.destroy');
 });
@@ -207,4 +207,5 @@ Route::controller(NewsController::class)->group(function () {
     Route::get('news/create', 'create')->middleware('auth')->name('news.create');
     Route::post('news/store', 'store')->middleware('auth')->name('news.store');
     Route::delete('news/{id}', 'destroy')->middleware('auth')->name('news.destroy');
+    Route::get('news/list-news', 'view')->middleware('auth')->name('news.list-news');
 });

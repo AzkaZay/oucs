@@ -77,6 +77,16 @@
                                 </div>
                             </div>
                             <div class="col-lg-3">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title d-flex justify-content-between">
+                                            <span>News Management</span>
+                                            <a href="{{ route('news.list-news') }}"><i class="far fa-edit me-1"></i></a>
+                                        </h5>
+                                    </div>
+                                </div>
+
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">

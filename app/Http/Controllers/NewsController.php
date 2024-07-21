@@ -16,6 +16,13 @@ class NewsController extends Controller
         return view('dashboard.home', compact('news')); // Use compact to pass the news variable to the view
     }
 
+    public function view()
+    {
+        $newsList = News::all();
+        return view('news.list-news', compact('newsList'));
+    }
+    
+
     // Show the form to create a new news item
     public function create()
     {
