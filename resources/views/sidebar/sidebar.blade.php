@@ -26,7 +26,7 @@
                         </li>
                         @endif
 
-                        @if(Session::get('role_name') === 'Student')
+                        @if(Session::get('role_name') === 'Student' || Session::get('role_name') === 'student')
                         <li class="{{ set_active(['student/dashboard']) }} {{ (request()->is('view')) ? 'active' : '' }}">
                             <a href="{{ route('student/dashboard') }}">Student</a>
                         </li>
@@ -115,7 +115,7 @@
                     <ul>
                         <li><a href="{{ route('timetable.timetable.page') }}" class="{{ set_active(['timetable.timetable.page']) }}">Time Table</a></li>
                         
-                        @if (Session::get('role_name') === 'Student')
+                        @if (Session::get('role_name') === 'Student' || Session::get('role_name') === 'student')
                         <li class="{{ set_active(['timetable.student-schedules.page']) }} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
                             <a href="{{ route('timetable.student-schedules.page') }}">Student's Scheduler</a>
                         </li>

@@ -33,7 +33,9 @@ class NewsController extends Controller
         News::create([
             'title' => $request->title,
             'message' => $request->message,
-            'created_by' => Auth::user()->name, // Set the created_by field with the logged-in user's name
+            'created_by' => Auth::user()->name,
+            'created_at' => $request->created_at,
+            // Set the created_by field with the logged-in user's name
         ]);
 
         return redirect()->route('dashboard.home')->with('success', 'News added successfully!');

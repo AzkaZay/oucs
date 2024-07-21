@@ -6,7 +6,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">Admin Profile</h3>
+                    <h3 class="page-title">Student Profile</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
@@ -33,16 +33,10 @@
                 <div class="profile-menu">
                     <ul class="nav nav-tabs nav-tabs-solid">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">Personal Details</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab"><span class="btn btn-primary">Password</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Change Password</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('/') }}">Back</a>
+                            <a class="nav-link" data-bs-toggle="tab1" href="{{ route('home') }}"><span class="btn btn-primary">Home</span></a>
                         </li>
                     </ul>
                 </div>
@@ -78,17 +72,16 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
-                                            <span>Account Status</span>
-                                            <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
+                                            <span>My grades</span>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('grading.grading-show', ['studentId' => Auth::id()]) }}"><i class="fab fa-pied-piper-square"></i></a>
                                         </h5>
-                                        <button class="btn btn-success" type="button"><i class="fe fe-check-verified"></i> Active</button>
                                     </div>
                                 </div>
-
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">

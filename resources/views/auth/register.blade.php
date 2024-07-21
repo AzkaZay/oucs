@@ -55,7 +55,7 @@
             </form>
             <div class="login-or">
                 <span class="or-line"></span>
-                <span class="span-or">or</span>
+                <span class="span-or">OUCS</span>
             </div>
         </div>
     </div>

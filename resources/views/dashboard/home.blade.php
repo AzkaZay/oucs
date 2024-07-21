@@ -6,7 +6,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">News</h3>
+                    <h3 class="page-title">Home</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('news.create') }}">Add News</a></li>
                         <li class="breadcrumb-item active">All News</li>
@@ -24,6 +24,9 @@
                             <p class="card-text">{{ $newsItem->message }}</p>
                             <footer class="blockquote-footer">
                                 Created by: {{ $newsItem->created_by }}
+                            </footer>
+                            <footer class="menu-title">
+                                Created at: {{ $newsItem->created_at }}
                             </footer>
 
                             @auth

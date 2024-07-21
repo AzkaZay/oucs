@@ -79,6 +79,8 @@ class LoginController extends Controller
                 Session::put('user_id', $user->user_id);
                 Session::put('join_date', $user->join_date);
                 Session::put('phone_number', $user->phone_number);
+                Session::put('date_of_birth', $user->phone_number);
+                Session::put('address', $user->phone_number);
                 Session::put('status', $user->status);
                 Session::put('role_name', $user->role_name);
                 Session::put('avatar', $user->avatar);
@@ -108,6 +110,8 @@ class LoginController extends Controller
         $request->session()->forget('user_id');
         $request->session()->forget('join_date');
         $request->session()->forget('phone_number');
+        $request->session()->forget('date_of_birth');
+        $request->session()->forget('address');
         $request->session()->forget('status');
         $request->session()->forget('role_name');
         $request->session()->forget('avatar');

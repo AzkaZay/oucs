@@ -5,7 +5,7 @@
 {!! Toastr::message() !!}
 <div class="login-right">
     <div class="login-right-wrap">
-        <h1>Welcome to Dashbord</h1>
+        <h1>Welcome to OUCS</h1>
         <p class="account-subtitle">Need an account? <a href="{{ route('register') }}">Sign Up</a></p>
         <h2>Sign in</h2>
         <form action="{{ route('login') }}" method="POST">
@@ -27,7 +27,6 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <a href="forgot-password.html">Forgot Password?</a>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger btn-block" type="submit">Login</button>
@@ -35,7 +34,7 @@
         </form>
         <div class="login-or">
             <span class="or-line"></span>
-            <span class="span-or">or</span>
+            <span class="span-or">OUCS</span>
         </div>
     </div>
 </div>
