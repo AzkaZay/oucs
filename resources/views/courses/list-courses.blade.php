@@ -16,7 +16,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
+                        @if (Session::get('role_name') === 'Admin')    
                         <a href="{{ route('courses.add-courses.page') }}" class="btn btn-primary"><i class="fa fa-plus"></i></i>  Add New Course</a>
+                        @endif
                         </br>
                         </br>
                             <table class="table table-striped">
@@ -38,7 +40,9 @@
                                         <td>{{ $course->hod }}</td>
                                         <td>{{ $course->year_introduced }}</td>
                                         <td>{{ $course->number_of_students }}</td>
+                                        
                                         <td class="text-end">
+                                            @if (Session::get('role_name') === 'Admin')
                                             <a href="{{ route('list-courses.show', $course->id) }}" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>
                                             <a href="{{ route('list-courses.edit', $course->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
                                             <form action="{{ route('list-courses.destroy', $course->id) }}" method="POST" style="display: inline;">
@@ -48,6 +52,7 @@
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

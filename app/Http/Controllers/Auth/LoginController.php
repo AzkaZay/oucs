@@ -79,8 +79,8 @@ class LoginController extends Controller
                 Session::put('user_id', $user->user_id);
                 Session::put('join_date', $user->join_date);
                 Session::put('phone_number', $user->phone_number);
-                Session::put('date_of_birth', $user->phone_number);
-                Session::put('address', $user->phone_number);
+                Session::put('date_of_birth', $user->date_of_birth);
+                Session::put('address', $user->address);
                 Session::put('status', $user->status);
                 Session::put('role_name', $user->role_name);
                 Session::put('avatar', $user->avatar);

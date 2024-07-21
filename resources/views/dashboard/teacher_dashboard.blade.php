@@ -35,6 +35,9 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#password_tab"><span class="btn btn-primary">Password</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab1" href="{{ route('home') }}"><span class="btn btn-primary">Home</span></a>
+                        </li>
                     </ul>
                 </div>
                 <div class="tab-content profile-tab-cont">

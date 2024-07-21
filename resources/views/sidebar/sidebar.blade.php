@@ -5,11 +5,6 @@
                 <li class="menu-title">
                     <span>Main Menu</span>
                 </li>
-                @if (Session::get('role_name') === 'Admin')
-                <li class="{{ set_active(['setting/page']) }} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
-                    <a href="{{ route('setting/page') }}"><i class="fas fa-cog"></i> <span>Settings</span></a>
-                </li>
-                @endif
 
                 <li class="submenu {{ set_active(['home','teacher/dashboard','student/dashboard']) }}">
                     <a href="#"><i class="feather-grid"></i> <span>Dashboard</span> <span class="menu-arrow"></span></a>
@@ -113,7 +108,7 @@
                 <li class="submenu {{ set_active(['timetable.timetable.page','timetable.teacher-schedules.page','timetable.student-schedules.page']) }}">
                     <a href="#"><i class="fas fa-table"></i> <span>Scheduling Menu</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="{{ route('timetable.timetable.page') }}" class="{{ set_active(['timetable.timetable.page']) }}">Time Table</a></li>
+                        <li><a href="{{ route('timetable.index') }}" class="{{ set_active(['timetable.index']) }}">Time Table</a></li>
                         
                         @if (Session::get('role_name') === 'Student' || Session::get('role_name') === 'student')
                         <li class="{{ set_active(['timetable.student-schedules.page']) }} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">

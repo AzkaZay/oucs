@@ -7,8 +7,8 @@
         <div>
             <p><strong>Course Id:</strong> {{ $newCourse->course_id }}</p>
             <p><strong>Course Name:</strong> {{ $newCourse->course_name }}</p>
-            <p><strong>HOD:</strong> {{ $newCourse->class }}</p>
-            <p><strong>Year introduced:</strong> {{ $newCourse->datetime }}</p>
+            <p><strong>HOD:</strong> {{ $newCourse->hod }}</p>
+            <p><strong>Year introduced:</strong> {{ $newCourse->year_introduced}}</p>
             <p><strong>Number of Students:</strong> {{ $newCourse->number_of_students }}</p>
         </div>
         <a href="{{ route('courses.list-courses.page') }}" class="btn btn-secondary">Back</a>

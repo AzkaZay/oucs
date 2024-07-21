@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('join_date')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('status')->nullable();
+            $table->string('address')->nullable();
             $table->string('role_name')->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('avatar')->nullable();

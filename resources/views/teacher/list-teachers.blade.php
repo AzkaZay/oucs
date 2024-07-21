@@ -17,30 +17,6 @@
             </div>
         </div>
 
-        <div class="student-group-form">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search by ID ...">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search by Name ...">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search by Phone ...">
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="search-student-btn">
-                        <button type="btn" class="btn btn-primary">Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card card-table">
@@ -51,12 +27,6 @@
                                     <h3 class="page-title">Teachers</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a href="teachers.html" class="btn btn-outline-gray me-2 active"><i
-                                            class="feather-list"></i></a>
-                                    <a href="{{ route('teacher/grid/page') }}" class="btn btn-outline-gray me-2"><i
-                                            class="feather-grid"></i></a>
-                                    <a href="#" class="btn btn-outline-danger me-2"><i
-                                            class="fas fa-download"></i> Download</a>
                                     <a href="{{ route('teacher/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
@@ -67,9 +37,6 @@
                                 <thead class="student-thread"> 
                                     <tr>
                                         <th>
-                                            <div class="form-check check-tables">
-                                                <input class="form-check-input" type="checkbox" value="something">
-                                            </div>
                                         </th>
                                         <th>ID</th>
                                         <th>Name</th>
@@ -86,10 +53,6 @@
                                     @foreach ($listTeacher as $list)
                                     <tr>
                                         <td>
-                                            <div class="form-check check-tables">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="something">
-                                            </div>
                                         </td>
                                         <td hidden class="id">{{ $list->id }}</td>
                                         <td>{{ $list->user_id }}</td>
