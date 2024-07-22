@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\TeacherScheduleController;
-use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -21,6 +20,7 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentScheduleController;
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\UserController;
 use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Auth;
@@ -158,11 +158,14 @@ Route::controller(CoursesController::class)->group(function () {
 
 // ----------------------- timetable -----------------------------//
 Route::controller(TimetableController::class)->group(function () {
-    Route::get('timetable/timetable/page', 'timetableview')->middleware('auth')->name('timetable.timetable.page');
-    Route::get('timetable/student-schedules/page', 'studenttimetableview')->middleware('auth')->name('timetable.student-schedules.page');
-    Route::get('timetable/teacher-schedules/page', 'teachertimetableview')->middleware('auth')->name('timetable.teacher-schedules.page');
+    Route::get('/timetable', 'index')->name('timetable.index');
+    Route::get('/timetable/create', 'create')->name('timetable.create');
+    Route::post('/timetable/store', 'store')->name('timetable.store');
+    Route::get('/timetable/{id}', 'show')->name('timetable.show');
+    Route::get('/timetable/{id}/edit', 'edit')->name('timetable.edit');
+    Route::put('/timetable/{id}', 'update')->name('timetable.update');
+    Route::delete('/timetable/{id}', 'destroy')->name('timetable.destroy');
 });
-
 // ----------------------- student-schedules -----------------------------//
 Route::controller(StudentScheduleController::class)->group(function () {
     Route::get('timetable/student-schedules/page', 'index')->middleware('auth')->name('timetable.student-schedules.page');

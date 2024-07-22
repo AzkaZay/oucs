@@ -6,6 +6,7 @@ use App\Models\Grading;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class GradingController extends Controller
 {
@@ -41,14 +42,17 @@ class GradingController extends Controller
 
     }
 
-    public function show($id)
+    public function show($studentId)
     {
-        $newGrading = Grading::findOrFail($id);
-        return view('grading.grading-show', compact('newGrading'));
-        // $studentGrades = Grading::where('student_id', $studentId)->get();
-    }//$stdentId is going to come from the route students/show/{studentId}
-    // route({'student.show', ['studentId' => Session.get('user_Id')})
-    // remember to add the Session.get(role_name == 'student') to the sidebar item "My Grades"
+        if (Auth::id() != $studentId) {
+            abort(403, 'Unauthorized access');
+        }
+
+        $studentGrades = Grading::whereRaw('CAST(student_id AS UNSIGNED) = ?', [$studentId])
+        ->get();
+
+        return view('grading.grading-show', compact('studentGrades'));
+    }
 
     public function gradingDelete(Request $request)
     {

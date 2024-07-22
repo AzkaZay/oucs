@@ -44,7 +44,6 @@
                                         <td class="text-end">
                                             @if (Session::get('role_name') === 'Admin')
                                             <a href="{{ route('list-courses.show', $course->id) }}" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>
-                                            <a href="{{ route('list-courses.edit', $course->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
                                             <form action="{{ route('list-courses.destroy', $course->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')

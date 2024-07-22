@@ -29,9 +29,11 @@
                                         <h3 class="page-title">Students</h3>
 
                                     </div>
+                                    @if (Session::get('role_name') === 'Admin')
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="{{ route('student.add-student') }}" class="btn btn-danger"><i class="fas fa-plus"></i></a>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -62,6 +64,7 @@
                                             <td>{{ $list->phone_number }}</td>
 
                                             <td class="text-end">
+                                            @if (Session::get('role_name') === 'Admin')
                                                 <div class="actions">
                                                     <a href="{{ url('student/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="feather-edit"></i>
@@ -70,6 +73,7 @@
                                                         <i class="feather-trash-2 me-1"></i>
                                                     </a>
                                                 </div>
+                                            @endif
                                             </td>
                                         </tr>
                                         @endforeach
