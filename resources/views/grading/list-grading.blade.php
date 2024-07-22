@@ -47,7 +47,6 @@
                                         <td>{{ $grade->semester }}</td>
                                         <td class="text-end">
                                             <a href="{{ route('list-grading.edit', $grade->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
-                                            <a href="{{ route('grading.grading-show', $grade->id) }}" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>
                                             <form action="{{ route('list-grading.destroy', $grade->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')

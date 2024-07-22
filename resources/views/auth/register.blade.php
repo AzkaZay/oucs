@@ -12,6 +12,25 @@
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
                     <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                 </div>
+                
+                <div class="form-group">
+                    <label>Phone<span class="login-danger">*</span></label>
+                    <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number">
+                    <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                </div>
+                
+                <div class="form-group">
+                    <label>Address<span class="login-danger">*</span></label>
+                    <input type="text" class="form-control @error('address') is-invalid @enderror" name="address">
+                    <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                </div>
+
+                <div class="form-group">
+                    <label>DOB<span class="login-danger">*</span></label>
+                    <input type="text" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth">
+                    <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                </div>
+
                 <div class="form-group">
                     <label>Email <span class="login-danger">*</span></label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
