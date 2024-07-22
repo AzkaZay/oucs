@@ -49,7 +49,6 @@
                                         <td>{{ $grade->semester }}</td>
                                         <td class="text-end">
                                         @if (Session::get('role_name') === 'teacher'|| Session::get('role_name') === 'Teacher' || Session::get('role_name') === 'Teachers')
-                                            <a href="{{ route('list-grading.edit', $grade->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
                                             <form action="{{ route('list-grading.destroy', $grade->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')

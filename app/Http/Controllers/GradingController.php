@@ -95,21 +95,28 @@ class GradingController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'student_id' => 'required|string|max:255',
-            'teacher_id' => 'required|string|max:255',
-            'full_name' => 'required|string|max:255',
-            'module_name' => 'required|string|max:255',
-            'grading' => 'required',
-            'semester' => 'required',
-        ]);
+{
+    logger('Entering update method');
 
-        $newGrading = Grading::findOrFail($id);
-        $newGrading->update($request->all());
+    $request->validate([
+        'student_id' => 'required|string|max:255',
+        'teacher_id' => 'required|string|max:255',
+        'full_name' => 'required|string|max:255',
+        'module_name' => 'required|string|max:255',
+        'grading' => 'required',
+        'semester' => 'required',
+    ]);
 
-        return redirect()->route('grading.list-grading')->with('success', 'Grading updated successfully.');
-    }
+    logger('Validation passed', $request->all());
+
+    $newGrading = Grading::findOrFail($id);
+    logger('Found grading record', ['grading' => $newGrading]);
+
+    $newGrading->update($request->all());
+    logger('Grading record updated');
+
+    return redirect()->route('grading.list-grading')->with('success', 'Grading updated successfully.');
+}
 
     public function destroy($id)
     {
