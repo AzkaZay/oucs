@@ -47,6 +47,12 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
+                                            <label>join_date<span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="join_date" value="{{ $users->join_date }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
                                             <label>DOB<span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="date_of_birth" value="{{ $users->date_of_birth }}">
                                         </div>
@@ -84,17 +90,10 @@
                                         </div>
                                         <input type="hidden" name="hidden_avatar" value="{{ $users->avatar }}">
                                     </div>
-
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Position <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="position" value="{{ $users->position }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Department <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="department" value="{{ $users->department }}">
+                                            <label>Address <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="address" value="{{ $users->address }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">

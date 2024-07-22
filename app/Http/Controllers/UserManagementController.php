@@ -41,11 +41,11 @@ class UserManagementController extends Controller
                 $user_id       = $request->user_id;
                 $name         = $request->name;
                 $email        = $request->email;
-                $date_of_birth = $request->date_of_birth;
-                $address       = $request->address;
                 $role_name    = $request->role_name;
-                $position     = $request->position;
+                $join_date     = $request->join_date;
+                $date_of_birth = $request->date_of_birth;
                 $phone        = $request->phone_number;
+                $address        = $request->address;
                 $department   = $request->department;
                 $status       = $request->status;
 
@@ -71,10 +71,10 @@ class UserManagementController extends Controller
                     'name'         => $name,
                     'role_name'    => $role_name,
                     'email'        => $email,
-                    'position'     => $position,
-                    'address'         => $address,
-                    'phone_number' => $phone,
+                    'join_date'     => $join_date,
                     'date_of_birth' => $date_of_birth,
+                    'phone_number' => $phone,
+                    'address'       => $address,
                     'department'   => $department,
                     'status'       => $status,
                     'avatar'       => $image_name,
@@ -119,7 +119,7 @@ class UserManagementController extends Controller
     
         } catch(\Exception $e) {
             DB::rollback();
-            Toastr::error('User deleted fail :)','Error');
+            Toastr::success('User deleted successfully :)','Success');
             return redirect()->back();
         }
     }

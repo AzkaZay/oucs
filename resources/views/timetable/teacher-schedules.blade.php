@@ -9,6 +9,7 @@
                     <div class="card-body">
                         <div class="mt-5 mb-3 clearfix">
                             <h2 class="pull-left">Teacher's Schedule</h2>
+                            </br>
                             <a href="{{ route('teacher-schedules.create') }}" class="btn btn-success pull-right">
                                 <i class="fa fa-plus"></i> Add Module
                             </a>

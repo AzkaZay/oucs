@@ -26,6 +26,7 @@
                                 <div class="col">
                                     <h3 class="page-title">Teachers</h3>
                                 </div>
+                                </br>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="{{ route('teacher/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                 </div>

@@ -22,9 +22,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
+                        @if (Session::get('role_name') === 'teacher'|| Session::get('role_name') === 'Teacher' || Session::get('role_name') === 'Teachers')
                             <a href="{{ route('grading.add-grading') }}" class="btn btn-primary">
                                 <i class="fa fa-plus"></i> Add Grading
                             </a>
+                            @endif
                             <br><br>
                             <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
@@ -46,6 +48,7 @@
                                         <td>{{ $grade->grading }}</td>
                                         <td>{{ $grade->semester }}</td>
                                         <td class="text-end">
+                                        @if (Session::get('role_name') === 'teacher'|| Session::get('role_name') === 'Teacher' || Session::get('role_name') === 'Teachers')
                                             <a href="{{ route('list-grading.edit', $grade->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
                                             <form action="{{ route('list-grading.destroy', $grade->id) }}" method="POST" style="display: inline;">
                                                 @csrf
@@ -54,6 +57,7 @@
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </form>
+                                        @endif
                                         </td>
                                     </tr>
                                     @endforeach
