@@ -168,8 +168,8 @@ Route::controller(TimetableController::class)->group(function () {
 });
 // ----------------------- student-schedules -----------------------------//
 Route::controller(StudentScheduleController::class)->group(function () {
-    Route::get('timetable/student-schedules/page', 'index')->middleware('auth')->name('timetable.student-schedules.page');
-    Route::get('timetable/student-schedules/create', 'create')->middleware('auth')->name('student-schedules.create');
+    Route::get('timetable/student-schedules/page/{student_id}', 'index')->middleware('auth')->name('timetable.student-schedules.page');
+    Route::get('timetable/student-schedules/create/{student_id}', 'create')->middleware('auth')->name('student-schedules.create');
     Route::post('timetable/student-schedules', 'store')->middleware('auth')->name('student-schedules.store');
     Route::get('timetable/student-schedules/{id}', 'show')->middleware('auth')->name('student-schedules.show');
     Route::get('timetable/student-schedules/{id}/edit', 'edit')->middleware('auth')->name('student-schedules.edit');
@@ -179,8 +179,8 @@ Route::controller(StudentScheduleController::class)->group(function () {
 
 // ----------------------- teacher-schedules -----------------------------//
 Route::controller(TeacherScheduleController::class)->group(function () {
-    Route::get('timetable/teacher-schedules/page', 'index')->middleware('auth')->name('timetable.teacher-schedules.page');
-    Route::get('timetable/teacher-schedules/create', 'create')->middleware('auth')->name('teacher-schedules.create');
+    Route::get('timetable/teacher-schedules/page/{teacher_id}', 'index')->middleware('auth')->name('timetable.teacher-schedules.page');
+    Route::get('timetable/teacher-schedules/create/{teacher_id}', 'create')->middleware('auth')->name('teacher-schedules.create');
     Route::post('timetable/teacher-schedules', 'store')->middleware('auth')->name('teacher-schedules.store');
     Route::get('timetable/teacher-schedules/{id}', 'show')->middleware('auth')->name('teacher-schedules.show');
     Route::get('timetable/teacher-schedules/{id}/edit', 'edit')->middleware('auth')->name('teacher-schedules.edit');

@@ -7,6 +7,7 @@
         <form action="{{ route('teacher-schedules.update', $teacherSchedule->id) }}" method="POST">
             @csrf
             @method('PUT')
+            <input hidden type="text" name="created_by" class="form-control" value="{{ $teacherSchedule->created_by??intval(Session::get('user_id')) }}" required>
             <div class="form-group">
                 <label for="course_name">Course Name</label>
                 <input type="text" name="course_name" class="form-control" value="{{ $teacherSchedule->course_name }}" required>
@@ -28,7 +29,7 @@
                 <input type="number" name="number_of_students" class="form-control" value="{{ $teacherSchedule->number_of_students }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route('timetable.teacher-schedules.page') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('timetable.teacher-schedules.page', ['teacher_id' => Session::get('user_id')]) }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </div>

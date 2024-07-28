@@ -14,6 +14,7 @@ class CreateStudentSchedulesTable extends Migration
             $table->string('class');
             $table->dateTime('datetime');
             $table->integer('number_of_classes');
+            $table->string('created_by');
             // Add any other columns you need for your student schedules
             $table->timestamps();
         });

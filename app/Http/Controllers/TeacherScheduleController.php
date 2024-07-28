@@ -8,10 +8,20 @@ use App\Models\TeacherSchedule;
 class TeacherScheduleController extends Controller
 {
     // Index method to display all teacher schedules
-    public function index()
+    public function index($teacherId = null)
     {
-        $teacherSchedules = TeacherSchedule::all();
-        return view('timetable.teacher-schedules', ['teacherSchedules' => $teacherSchedules]);
+        if($teacherId){
+
+            $teacherSchedules = TeacherSchedule::whereRaw('CAST(teacher_id AS UNSIGNED) = ?', [$teacherId])
+            ->get();
+
+            return view('timetable.teacher-schedules', ['teacherSchedules' => $teacherSchedules, 'teacher_id' => $teacherId]);
+        }
+        else{
+            $teacherSchedules = TeacherSchedule::all();
+            return view('timetable.teacher-schedules', ['teacherSchedules' => $teacherSchedules]);
+        
+        }
     }
 
     public function create()
@@ -44,15 +54,17 @@ class TeacherScheduleController extends Controller
 
     // Create a new teacher schedule using the request data
     $teacherSchedule = new TeacherSchedule();
+    $teacherSchedule->teacher_id = auth()->user()->id; // Get the authenticated user's ID
     $teacherSchedule->course_name = $request->input('course_name');
     $teacherSchedule->module_name = $request->input('module_name');
     $teacherSchedule->class = $request->input('class');
     $teacherSchedule->datetime = $request->input('datetime');
     $teacherSchedule->number_of_students = $request->input('number_of_students');
+    $teacherSchedule->created_by = auth()->user()->id; // Get the authenticated user's ID
     $teacherSchedule->save();
 
     // Redirect the user after successfully storing the teacher schedule
-    return redirect()->route('timetable.teacher-schedules.page')->with('success', ' Schedule created successfully.');
+    return redirect()->route('timetable.teacher-schedules.page', ['teacher_id' => auth()->user()->id])->with('success', ' Schedule created successfully.');
 }
 
 
@@ -77,7 +89,7 @@ class TeacherScheduleController extends Controller
         $teacherSchedule = TeacherSchedule::findOrFail($id);
         $teacherSchedule->update($request->all());
 
-        return redirect()->route('timetable.teacher-schedules.page')->with('success', ' Schedule updated successfully.');
+        return redirect()->route('timetable.teacher-schedules.page', ['teacher_id' => intval(auth()->user()->id)])->with('success', ' Schedule updated successfully.');
     }
 
     // Destroy method to delete a specific teacher schedule from the database
@@ -86,6 +98,6 @@ class TeacherScheduleController extends Controller
         $teacherSchedule = TeacherSchedule::findOrFail($id);
         $teacherSchedule->delete();
 
-        return redirect()->route('timetable.teacher-schedules.page')->with('success', ' Schedule deleted successfully.');
+        return redirect()->route('timetable.teacher-schedules.page', ['teacher_id' => auth()->user()->id])->with('success', ' Schedule deleted successfully.');
     }
 }

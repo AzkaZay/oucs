@@ -8,7 +8,7 @@
                 <div class="card card-table">
                     <div class="card-body">
                     <h2>Create New Student Schedule</h2>
-                    <form method="POST" action="{{ route('student-schedules.store') }}">
+                    <form method="POST" action="{{ route('student-schedules.store', ['student_id' => Session::get('user_id')]) }}">
                             @csrf
                             <div class="form-group">
                                 <label for="module_name">Module Name:</label>

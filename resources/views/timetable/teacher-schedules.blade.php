@@ -10,7 +10,7 @@
                         <div class="mt-5 mb-3 clearfix">
                             <h2 class="pull-left">Teacher's Schedule</h2>
                             </br>
-                            <a href="{{ route('teacher-schedules.create') }}" class="btn btn-success pull-right">
+                            <a href="{{ route('teacher-schedules.create', ['teacher_id' => Session::get('user_id')]) }}" class="btn btn-success pull-right">
                                 <i class="fa fa-plus"></i> Add Module
                             </a>
                         </div>
@@ -31,7 +31,8 @@
                             <tbody>
                                 @foreach($teacherSchedules as $schedule)
                                 <tr>
-                                    <td>{{ $schedule->id }}</td>
+                                    <td hidden>{{ $schedule->id }}</td>
+                                    <td></td>
                                     <td>{{ $schedule->course_name }}</td>
                                     <td>{{ $schedule->module_name }}</td>
                                     <td>{{ $schedule->class }}</td>

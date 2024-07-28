@@ -112,13 +112,13 @@
                         
                         @if (Session::get('role_name') === 'Student' || Session::get('role_name') === 'student')
                         <li class="{{ set_active(['timetable.student-schedules.page']) }} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
-                            <a href="{{ route('timetable.student-schedules.page') }}">Student's Scheduler</a>
+                            <a href="{{ route('timetable.student-schedules.page', ['student_id' => Session::get('user_id')]) }}">Student's Scheduler</a>
                         </li>
                         @endif
 
                         @if (Session::get('role_name') === 'teacher'||Session::get('role_name') === 'Teachers')
                         <li class="{{ set_active(['timetable.teacher-schedules.page']) }} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
-                            <a href="{{ route('timetable.teacher-schedules.page') }}">Teacher's Scheduler</a>
+                            <a href="{{ route('timetable.teacher-schedules.page', ['teacher_id' => Session::get('user_id')]) }}">Teacher's Scheduler</a>
                         </li>
                         @endif
                     </ul>

@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="mt-5 mb-3 clearfix">
                             <h2 class="pull-left">Student's Schedule</h2>
-                            <a href="{{ route('student-schedules.create') }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Module</a>
+                            <a href="{{ route('student-schedules.create', ['student_id' => Session::get('user_id')]) }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Module</a>
                         </div>
 
                         @if($studentSchedules->isNotEmpty())
@@ -27,11 +27,13 @@
                             <tbody>
                                 @foreach($studentSchedules as $schedule)
                                 <tr>
-                                    <td>{{ $schedule->id }}</td>
+                                    <td hidden>{{ $schedule->id }}</td>
+                                    <td></td>
                                     <td>{{ $schedule->module_name }}</td>
                                     <td>{{ $schedule->class }}</td>
                                     <td>{{ $schedule->datetime }}</td>
                                     <td>{{ $schedule->number_of_classes }}</td>
+    
                                     <td>
                                         <a href="{{ route('student-schedules.show', $schedule->id) }}" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>
                                         <a href="{{ route('student-schedules.edit', $schedule->id) }}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="far fa-edit"></span></a>
